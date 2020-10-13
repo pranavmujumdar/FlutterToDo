@@ -5,17 +5,36 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  // This widget is the root of the To-Do application.
+  String title = "To Do";
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: title,
+        theme: ThemeData(
+            accentColor: Colors.blueAccent,
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity),
+        home: ToDoHomePage(title: title));
+  }
 }
 
-class MyHomePage extends StatefulWidget {
+class ToDoHomePage extends StatefulWidget {
+  ToDoHomePage({Key key, this.title}) : super(key: key);
+  final String title;
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _ToDoHomePageState createState() => _ToDoHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ToDoHomePageState extends State<ToDoHomePage> {
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text(widget.title),
+        ),
+      ),
+    );
+  }
 }
